@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Samiksha Kature — Portfolio</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0f0f13;
+      --surface: #1a1a24;
+      --border: #2a2a3a;
+      --accent: #7c6aff;
+      --accent-light: #a694ff;
+      --text: #e8e6f0;
+      --muted: #8b8a9b;
+      --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(15, 15, 19, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav .logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--accent-light);
+      text-decoration: none;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--text); }
+
+    /* ── SECTIONS ── */
+    section { padding: 6rem 2rem; max-width: 960px; margin: 0 auto; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 5rem;
+    }
+
+    #hero .eyebrow {
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    #hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    #hero h1 span { color: var(--accent-light); }
+
+    #hero p {
+      max-width: 560px;
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.75rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.1s;
+    }
+
+    .btn:active { transform: translateY(1px); }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover { opacity: 0.88; }
+
+    .btn-outline {
+      border: 1.5px solid var(--border);
+      color: var(--text);
+      background: transparent;
+    }
+
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent-light); }
+
+    /* ── SECTION HEADINGS ── */
+    .section-label {
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── ABOUT ── */
+    #about .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    #about p { color: var(--muted); margin-bottom: 1rem; }
+
+    .stat-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .stat {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--accent-light);
+    }
+
+    .stat span { font-size: 0.85rem; color: var(--muted); }
+
+    /* ── SKILLS ── */
+    #skills .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      transition: border-color 0.2s;
+    }
+
+    .skill-card:hover { border-color: var(--accent); }
+
+    .skill-card .category {
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .skill-card p { font-size: 0.9rem; color: var(--muted); }
+
+    /* ── PROJECTS ── */
+    #projects .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+
+    .project-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+
+    .project-card h3 { font-size: 1.1rem; font-weight: 700; }
+
+    .project-card p { font-size: 0.9rem; color: var(--muted); flex: 1; }
+
+    .tag-list { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+    .tag {
+      background: rgba(124, 106, 255, 0.12);
+      color: var(--accent-light);
+      border-radius: 4px;
+      padding: 0.15rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
+    .project-links { display: flex; gap: 1rem; margin-top: 0.25rem; }
+
+    .project-links a {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .project-links a:hover { color: var(--accent-light); }
+
+    /* ── CONTACT ── */
+    #contact {
+      text-align: center;
+    }
+
+    #contact p {
+      max-width: 500px;
+      margin: 0 auto 2rem;
+      color: var(--muted);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav ul { gap: 1.2rem; }
+      #about .about-grid { grid-template-columns: 1fr; }
+      .stat-list { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="logo">SK</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <p class="eyebrow">Hello, I'm</p>
+    <h1>Samiksha<br /><span>Kature</span></h1>
+    <p>Software developer focused on building clean, performant, and thoughtful digital experiences.</p>
+    <div class="btn-group">
+      <a href="#projects" class="btn btn-primary">View My Work</a>
+      <a href="#contact" class="btn btn-outline">Get in Touch</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label">About Me</p>
+    <h2>Who I Am</h2>
+    <div class="about-grid">
+      <div>
+        <p>I'm a software developer passionate about building products that solve real problems. I enjoy the full stack — from architecting backend systems to crafting pixel-perfect interfaces.</p>
+        <p>When I'm not coding, I'm exploring new technologies, contributing to open source, or writing about what I learn.</p>
+        <br />
+        <a href="#" class="btn btn-outline" style="display:inline-block">Download Resume</a>
+      </div>
+      <div class="stat-list">
+        <div class="stat"><strong>X+</strong><span>Years of experience</span></div>
+        <div class="stat"><strong>XX</strong><span>Projects shipped</span></div>
+        <div class="stat"><strong>XX</strong><span>Technologies used</span></div>
+        <div class="stat"><strong>∞</strong><span>Problems solved</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="section-label">Expertise</p>
+    <h2>Skills &amp; Technologies</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <p class="category">Frontend</p>
+        <p>React, TypeScript, HTML/CSS, Tailwind</p>
+      </div>
+      <div class="skill-card">
+        <p class="category">Backend</p>
+        <p>Node.js, Python, REST APIs, GraphQL</p>
+      </div>
+      <div class="skill-card">
+        <p class="category">Database</p>
+        <p>PostgreSQL, MongoDB, Redis</p>
+      </div>
+      <div class="skill-card">
+        <p class="category">DevOps</p>
+        <p>Docker, GitHub Actions, AWS, CI/CD</p>
+      </div>
+      <div class="skill-card">
+        <p class="category">Tools</p>
+        <p>Git, VS Code, Figma, Postman</p>
+      </div>
+      <div class="skill-card">
+        <p class="category">Practices</p>
+        <p>Agile, TDD, Code Review, System Design</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="section-label">Work</p>
+    <h2>Featured Projects</h2>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <h3>Project One</h3>
+        <p>Short description of what this project does and the problem it solves for users.</p>
+        <div class="tag-list">
+          <span class="tag">React</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">PostgreSQL</span>
+        </div>
+        <div class="project-links">
+          <a href="#">GitHub →</a>
+          <a href="#">Live Demo →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>Project Two</h3>
+        <p>Short description of what this project does and the problem it solves for users.</p>
+        <div class="tag-list">
+          <span class="tag">Python</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">Docker</span>
+        </div>
+        <div class="project-links">
+          <a href="#">GitHub →</a>
+          <a href="#">Live Demo →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>Project Three</h3>
+        <p>Short description of what this project does and the problem it solves for users.</p>
+        <div class="tag-list">
+          <span class="tag">TypeScript</span>
+          <span class="tag">Next.js</span>
+          <span class="tag">Tailwind</span>
+        </div>
+        <div class="project-links">
+          <a href="#">GitHub →</a>
+          <a href="#">Live Demo →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-label">Contact</p>
+    <h2>Let's Work Together</h2>
+    <p>Have a project in mind, an opportunity to share, or just want to connect? I'd love to hear from you.</p>
+    <div class="btn-group" style="justify-content:center">
+      <a href="mailto:your@email.com" class="btn btn-primary">Send an Email</a>
+      <a href="https://linkedin.com/in/yourprofile" class="btn btn-outline" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/SamikshaKature" class="btn btn-outline" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Samiksha Kature · Built with care</p>
+  </footer>
+
+</body>
+</html>
