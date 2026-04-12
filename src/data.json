@@ -1,0 +1,93 @@
+{
+  "meta": {
+    "name": "Samiksha Kature",
+    "tagline": "AI · Data · Systems",
+    "location": "Pune, India",
+    "email": "samiksha@email.com",
+    "socials": [
+      { "label": "GitHub", "url": "https://github.com/SamikshaKature" },
+      { "label": "LinkedIn", "url": "https://linkedin.com/in/samikshakature" },
+      { "label": "Twitter", "url": "https://twitter.com/samikshakature" }
+    ]
+  },
+  "about": "I'm a developer working at the intersection of artificial intelligence and data engineering. I build systems that make sense of large, messy datasets — from pipelines to interfaces. Currently focused on applied ML, LLM tooling, and developer experience. I care about legible code, fast feedback loops, and tools that get out of the way.",
+  "experience": [
+    {
+      "id": "exp-1",
+      "company": "Company Name",
+      "role": "Software Engineer",
+      "period": "2023 — Present",
+      "location": "Remote",
+      "bullets": [
+        "Built and maintained data pipelines processing 10M+ records/day using Python and Apache Kafka.",
+        "Designed a feature store abstraction that reduced ML model deployment time by 40%.",
+        "Led migration of legacy ETL workflows to a modern orchestration layer (Prefect).",
+        "Collaborated closely with ML engineers to productionise model serving infrastructure."
+      ]
+    },
+    {
+      "id": "exp-2",
+      "company": "Previous Company",
+      "role": "Data Engineer Intern",
+      "period": "2022 — 2023",
+      "location": "Pune, India",
+      "bullets": [
+        "Developed dashboards and reporting pipelines using dbt and BigQuery.",
+        "Automated data quality checks, reducing manual QA overhead by 60%.",
+        "Collaborated with product teams to define metrics and KPI frameworks."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj-1",
+      "title": "LLM Eval Harness",
+      "description": "An open-source evaluation framework for comparing LLM outputs across prompts, models, and datasets. Supports custom metrics, side-by-side diffs, and exports to JSONL for offline analysis.",
+      "tech": ["Python", "FastAPI", "OpenAI API", "React"],
+      "url": "https://github.com/SamikshaKature",
+      "year": "2024"
+    },
+    {
+      "id": "proj-2",
+      "title": "DataLineage CLI",
+      "description": "A command-line tool that parses SQL and dbt models to generate interactive lineage graphs, helping teams understand data dependencies at a glance.",
+      "tech": ["Python", "NetworkX", "Click", "D3.js"],
+      "url": "https://github.com/SamikshaKature",
+      "year": "2024"
+    },
+    {
+      "id": "proj-3",
+      "title": "Semantic Search Engine",
+      "description": "A lightweight semantic search system built on sentence-transformers and FAISS, with a clean React frontend for querying local document collections.",
+      "tech": ["Python", "FAISS", "HuggingFace", "React", "TypeScript"],
+      "url": "https://github.com/SamikshaKature",
+      "year": "2023"
+    }
+  ],
+  "miscellaneous": [
+    {
+      "category": "Writing",
+      "items": [
+        { "label": "How I think about data quality", "url": "#" },
+        { "label": "Building with LLMs in production", "url": "#" },
+        { "label": "Why observability matters in ML pipelines", "url": "#" }
+      ]
+    },
+    {
+      "category": "Reading",
+      "items": [
+        { "label": "Designing Data-Intensive Applications — Kleppmann", "url": null },
+        { "label": "The Pragmatic Programmer — Hunt & Thomas", "url": null },
+        { "label": "Staff Engineer — Will Larson", "url": null }
+      ]
+    },
+    {
+      "category": "Currently Exploring",
+      "items": [
+        { "label": "Agentic AI systems and multi-step reasoning", "url": null },
+        { "label": "eBPF for low-overhead observability", "url": null },
+        { "label": "Type theory and proof assistants", "url": null }
+      ]
+    }
+  ]
+}
