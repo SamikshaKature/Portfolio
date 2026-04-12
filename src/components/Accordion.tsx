@@ -22,7 +22,7 @@ export default function Accordion({ trigger, children, defaultOpen = false }: Ac
       <button
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
-        className="w-full py-4 flex items-start justify-between text-left group transition-opacity hover:opacity-70"
+        className="w-full py-5 flex items-start justify-between text-left group"
       >
         <div className="flex-1 min-w-0 pr-4">{trigger}</div>
         <motion.span

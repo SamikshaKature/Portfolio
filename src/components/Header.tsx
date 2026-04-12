@@ -35,7 +35,7 @@ export default function Header({ data }: HeaderProps) {
         initial="hidden"
         animate="show"
         custom={0}
-        className="font-sans font-black text-4xl sm:text-5xl tracking-tight leading-none mb-3"
+        className="font-sans font-bold text-5xl sm:text-6xl tracking-tight leading-none mb-4 bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-600"
       >
         {data.name}
       </motion.h1>
@@ -46,7 +46,7 @@ export default function Header({ data }: HeaderProps) {
         initial="hidden"
         animate="show"
         custom={0.08}
-        className="font-mono text-sm text-[#777] mb-6 tracking-wide"
+        className="font-mono text-xl text-slate-500 font-medium mb-6"
       >
         {data.tagline}
       </motion.p>

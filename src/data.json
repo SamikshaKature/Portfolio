@@ -1,7 +1,7 @@
 {
   "meta": {
-    "name": "Samiksha Kature",
-    "tagline": "AI · Data · Systems",
+    "name": "Samiksha",
+    "tagline": "Data • Decisions • Impact",
     "location": "Pune, India",
     "email": "samiksha@email.com",
     "socials": [
@@ -10,31 +10,17 @@
       { "label": "Twitter", "url": "https://twitter.com/samikshakature" }
     ]
   },
-  "about": "I'm a developer working at the intersection of artificial intelligence and data engineering. I build systems that make sense of large, messy datasets — from pipelines to interfaces. Currently focused on applied ML, LLM tooling, and developer experience. I care about legible code, fast feedback loops, and tools that get out of the way.",
+  "about": "Senior technical professional focused on turning complex data into actionable decision-making tools.",
   "experience": [
     {
       "id": "exp-1",
-      "company": "Company Name",
-      "role": "Software Engineer",
-      "period": "2023 — Present",
+      "company": "Current Tech",
+      "role": "Data Engineer",
+      "period": "2024 — Present",
       "location": "Remote",
       "bullets": [
-        "Built and maintained data pipelines processing 10M+ records/day using Python and Apache Kafka.",
-        "Designed a feature store abstraction that reduced ML model deployment time by 40%.",
-        "Led migration of legacy ETL workflows to a modern orchestration layer (Prefect).",
-        "Collaborated closely with ML engineers to productionise model serving infrastructure."
-      ]
-    },
-    {
-      "id": "exp-2",
-      "company": "Previous Company",
-      "role": "Data Engineer Intern",
-      "period": "2022 — 2023",
-      "location": "Pune, India",
-      "bullets": [
-        "Developed dashboards and reporting pipelines using dbt and BigQuery.",
-        "Automated data quality checks, reducing manual QA overhead by 60%.",
-        "Collaborated with product teams to define metrics and KPI frameworks."
+        "Built scalable data pipelines.",
+        "Optimized LLM inference."
       ]
     }
   ],
