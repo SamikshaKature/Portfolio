@@ -11,6 +11,16 @@ export function getMdx(dir: "projects" | "notes", slug: string) {
   return { frontmatter: data as Record<string, unknown>, content };
 }
 
+// For top-level MDX files like content/now.mdx
+export function getMdxFile(relativePath: string) {
+  const file = fs.readFileSync(
+    path.join(process.cwd(), "content", relativePath),
+    "utf8",
+  );
+  const { data, content } = matter(file);
+  return { frontmatter: data as Record<string, unknown>, content };
+}
+
 export function listMdx(dir: "projects" | "notes"): Array<{ slug: string } & Record<string, unknown>> {
   const d = path.join(process.cwd(), "content", dir);
   if (!fs.existsSync(d)) return [];
