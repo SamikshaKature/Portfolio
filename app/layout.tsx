@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, DM_Sans, JetBrains_Mono } from "next/font/google";
+import LayoutShell from "@/components/LayoutShell";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -65,10 +66,8 @@ export default function RootLayout({
         <a href="#main" className="skip-link">
           Skip to content
         </a>
-        {/* Phase 3: Nav, ScrollProgress go here */}
-        <main id="main">{children}</main>
-        {/* Phase 3: Footer, CommandPalette, CustomCursor, IntroScreen, SectionCounter go here */}
-        {/* Phase 7: Analytics, SpeedInsights go here */}
+        <LayoutShell>{children}</LayoutShell>
+        {/* Phase 7: <Analytics /> <SpeedInsights /> go here */}
       </body>
     </html>
   );
