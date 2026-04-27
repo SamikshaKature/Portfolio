@@ -1,10 +1,30 @@
-// Phase 4 will replace this with the full home page sections
+import About from "@/components/About";
+import Experience from "@/components/Experience";
+import Education from "@/components/Education";
+import Skills from "@/components/Skills";
+import Projects from "@/components/Projects";
+import NotesPreview from "@/components/NotesPreview";
+import Press from "@/components/Press";
+import Contact from "@/components/Contact";
+import HomePageShell from "@/components/HomePageShell";
+
+// HomePageShell (client) renders Hero with the shared palette context.
+// All other sections are Server Components passed as a slot.
 export default function HomePage() {
   return (
-    <div className="flex min-h-screen items-center justify-center">
-      <p className="section-label" style={{ color: "var(--muted)" }}>
-        v2 building…
-      </p>
-    </div>
+    <HomePageShell
+      sections={
+        <>
+          <About />
+          <Experience />
+          <Education />
+          <Skills />
+          <Projects />
+          <NotesPreview />
+          <Press />
+          <Contact />
+        </>
+      }
+    />
   );
 }

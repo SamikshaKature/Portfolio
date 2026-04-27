@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { site } from "@/content/site";
+import { usePalette } from "@/components/PaletteContext";
 
 const HOME_SECTIONS = [
   { label: "About",      id: "about"      },
@@ -16,10 +17,12 @@ const HOME_SECTIONS = [
 ];
 
 export default function Nav({
-  onOpenPalette,
+  onOpenPalette: onOpenPaletteProp,
 }: {
   onOpenPalette?: () => void;
 }) {
+  const { openPalette: openPaletteCtx } = usePalette();
+  const onOpenPalette = onOpenPaletteProp ?? openPaletteCtx;
   const pathname  = usePathname();
   const isHome    = pathname === "/";
   const [active,   setActive]   = useState("");
