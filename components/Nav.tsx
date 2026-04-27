@@ -143,7 +143,7 @@ export default function Nav({
                 color:   "var(--muted)",
                 background: "transparent",
               }}
-              aria-label="Open command palette"
+              aria-label="Open command palette (⌘K)"
             >
               <Kbd>⌘K</Kbd>
             </button>

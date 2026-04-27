@@ -242,7 +242,7 @@ export default function Hero({
           transition={{ duration: dur.sm, delay: 1.2 }}
           className="flex items-center justify-center gap-4 flex-wrap"
         >
-          <a href={site.meta.resumeUrl} target="_blank" rel="noopener noreferrer" className="btn-primary">
+          <a href={site.meta.resumeUrl} target="_blank" rel="noopener noreferrer" className="btn-primary" aria-label="Download resume PDF (opens in new tab)">
             Download Resume
           </a>
           <a
