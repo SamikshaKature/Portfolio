@@ -1,13 +1,15 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { PaletteProvider, usePalette } from "@/components/PaletteContext";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import SectionCounter from "@/components/SectionCounter";
 
-// Thin client wrapper that keeps layout.tsx a pure Server Component.
-// PaletteProvider owns open/close state; Nav and Hero consume it via
-// usePalette() so ⌘K works from both places.
-// Phase 5 will add CommandPalette, CustomCursor, IntroScreen, SectionCounter.
+// Lazy-load heavy interactive components
+const IntroScreen     = dynamic(() => import("@/components/IntroScreen"),     { ssr: false });
+const CommandPalette  = dynamic(() => import("@/components/CommandPalette"),  { ssr: false });
+const CustomCursor    = dynamic(() => import("@/components/CustomCursor"),    { ssr: false });
 
 function Shell({ children }: { children: React.ReactNode }) {
   const { openPalette } = usePalette();
@@ -16,10 +18,10 @@ function Shell({ children }: { children: React.ReactNode }) {
       <Nav onOpenPalette={openPalette} />
       <main id="main">{children}</main>
       <Footer />
-      {/* Phase 5: <CommandPalette /> */}
-      {/* Phase 5: <CustomCursor /> */}
-      {/* Phase 5: <IntroScreen /> */}
-      {/* Phase 5: <SectionCounter /> */}
+      <SectionCounter />
+      <IntroScreen />
+      <CommandPalette />
+      <CustomCursor />
     </>
   );
 }

@@ -192,6 +192,19 @@
   }
 }
 
+/* ── cmdk command palette item hover ── */
+.cmd-item[aria-selected="true"],
+.cmd-item:hover {
+  background: var(--surface) !important;
+  color: var(--accent) !important;
+}
+
+/* Status-dot pulse (used in Hero open-to-work pill) */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
 /* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
   *,
