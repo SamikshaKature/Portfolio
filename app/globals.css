@@ -1,0 +1,324 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Design tokens ── */
+:root {
+  --bg:           #0A0A0F;
+  --surface:      #12121A;
+  --surface-2:    #1A1A26;
+  --border:       #1E1E2E;
+  --border-hover: #2A2A3F;
+  --text:         #F0F0F0;
+  --text-soft:    #B8B8C5;
+  --muted:        #888899;
+  --accent:       #C9A84C;
+  --accent-hover: #E8C46A;
+  --accent-2:     #6FA8DC;
+  --danger:       #E07A7A;
+}
+
+/* ── Base ── */
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-dm-sans), system-ui, sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Subtle grain texture overlay */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9000;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 300px 300px;
+  }
+
+  /* Focus ring */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+}
+
+/* ── Hero gradient drift animations ── */
+@keyframes drift1 {
+  0%   { transform: translate(0,    0)    scale(1);   }
+  100% { transform: translate(40px, 30px) scale(1.1); }
+}
+@keyframes drift2 {
+  0%   { transform: translate(0,     0)     scale(1.1); }
+  100% { transform: translate(-30px, -40px) scale(1);   }
+}
+
+/* Orbital ring around photo placeholder */
+@keyframes orbit {
+  from { transform: rotate(0deg);   }
+  to   { transform: rotate(360deg); }
+}
+
+.gradient-blob-1 { animation: drift1 20s ease-in-out infinite alternate; }
+.gradient-blob-2 { animation: drift2 25s ease-in-out infinite alternate; }
+.orbital-ring    { animation: orbit  30s linear         infinite;         }
+
+/* ── Skip link ── */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 1rem;
+  padding: 8px 16px;
+  background: var(--accent);
+  color: var(--bg);
+  border-radius: 4px;
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  z-index: 9999;
+}
+.skip-link:focus {
+  left: 1rem;
+}
+
+/* ── Utility classes ── */
+@layer components {
+  .section-pad {
+    @apply py-28 md:py-32;
+  }
+
+  .content-width {
+    @apply max-w-content mx-auto px-6;
+  }
+
+  .prose-width {
+    @apply max-w-narrow mx-auto px-6;
+  }
+
+  .section-label {
+    font-family: var(--font-dm-sans), sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .section-heading {
+    font-family: var(--font-cormorant), Georgia, serif;
+    font-size: clamp(32px, 4vw, 40px);
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.2;
+    margin-top: 0.5rem;
+  }
+
+  .skill-tag {
+    font-family: var(--font-jetbrains-mono), monospace;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    background: transparent;
+    transition: border-color 0.15s, color 0.15s;
+    cursor: default;
+  }
+  .skill-tag:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 22px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    background: transparent;
+    border-radius: 4px;
+    font-family: var(--font-dm-sans), sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s;
+    cursor: pointer;
+  }
+  .btn-primary:hover {
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 22px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    background: transparent;
+    border-radius: 4px;
+    font-family: var(--font-dm-sans), sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: border-color 0.15s, color 0.15s;
+    cursor: pointer;
+  }
+  .btn-ghost:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+}
+
+/* ── MDX prose ── */
+.mdx-prose {
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-soft);
+}
+.mdx-prose h1, .mdx-prose h2, .mdx-prose h3, .mdx-prose h4 {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.25;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+.mdx-prose h2 { font-size: clamp(22px, 3vw, 28px); }
+.mdx-prose h3 { font-size: 20px; }
+.mdx-prose p  { margin-bottom: 1.25rem; }
+.mdx-prose a  { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.mdx-prose a:hover { color: var(--accent-hover); }
+.mdx-prose ul, .mdx-prose ol { padding-left: 1.4rem; margin-bottom: 1.25rem; }
+.mdx-prose li { margin-bottom: 0.4rem; }
+.mdx-prose blockquote {
+  border-left: 3px solid var(--accent);
+  padding: 0.5rem 1rem;
+  margin: 1.5rem 0;
+  color: var(--muted);
+  font-style: italic;
+  background: rgba(201,168,76,0.04);
+  border-radius: 0 4px 4px 0;
+}
+.mdx-prose code {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 13px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  padding: 1px 5px;
+  border-radius: 3px;
+  color: var(--accent-2);
+}
+.mdx-prose pre {
+  background: var(--surface) !important;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+.mdx-prose pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: inherit;
+  font-size: 13px;
+}
+.mdx-prose hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2.5rem 0;
+}
+.mdx-prose strong { color: var(--text); font-weight: 600; }
+
+/* ── cmdk command palette item hover ── */
+.cmd-item[aria-selected="true"],
+.cmd-item:hover {
+  background: var(--surface) !important;
+  color: var(--accent) !important;
+}
+
+/* Status-dot pulse (used in Hero open-to-work pill) */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .gradient-blob-1,
+  .gradient-blob-2,
+  .orbital-ring {
+    animation: none !important;
+  }
+}
+
+/* ── Print ── */
+@media print {
+  nav,
+  footer,
+  .skip-link,
+  body::after {
+    display: none !important;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 12pt;
+  }
+
+  .content-width {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .section-pad {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 10pt;
+    color: #555;
+  }
+}
